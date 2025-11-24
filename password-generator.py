@@ -16,8 +16,13 @@ try:
     special = input("Include special characters? (y/n): ")
     if special == "y" or special == "Y":
         characters_list.append(string.punctuation)
+    count = int(input("How many passwords to generate: "))
     characters = "".join(characters_list)
-    password = "".join(random.choices(characters, k=length))
-    print(f"Generate password: {password}")
+
+    passwords_generated = 1
+    while passwords_generated <= count:
+        password = "".join(random.choices(characters, k=length))
+        print(f"{password}")
+        passwords_generated += 1
 except IndexError:
     print("Without any characters, I cannot generate a password")
